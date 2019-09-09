@@ -1,7 +1,8 @@
-FROM php:7.2.20-cli
+FROM ubuntu:18.04
+
 
 # build base environment
-RUN apt-get update && apt-get install -y unzip libssl-dev libmcrypt-dev libpng-dev wget python3 python3-pip && \
+RUN apt-get update && apt-get install -y unzip libssl-dev libmcrypt-dev libpng-dev libzip-dev curl wget python3 python3-pip && \
     docker-php-ext-install pdo_mysql pdo zip pcntl && \
     pip3 install awscli --upgrade --user
 
