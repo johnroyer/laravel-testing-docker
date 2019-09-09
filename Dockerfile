@@ -1,5 +1,16 @@
 FROM ubuntu:18.04
 
+RUN echo "deb http://free.nchc.org.tw/ubuntu bionic main restricted" > /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-updates main restricted" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic universe" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-updates universe" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-updates multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-security main restricted" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-security universe" >> /etc/apt/sources.list && \
+    echo "deb http://free.nchc.org.tw/ubuntu bionic-security multiverse" >> /etc/apt/sourcess.list
+
 
 # build base environment
 RUN apt-get update && apt-get install -y unzip libssl-dev libmcrypt-dev libpng-dev libzip-dev curl wget python3 python3-pip && \
