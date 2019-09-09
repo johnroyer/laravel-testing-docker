@@ -13,8 +13,8 @@ RUN echo "deb http://free.nchc.org.tw/ubuntu bionic main restricted" > /etc/apt/
 
 
 # build base environment
-RUN apt-get update && apt-get install -y unzip libssl-dev libmcrypt-dev libpng-dev libzip-dev curl wget python3 python3-pip && \
-    docker-php-ext-install pdo_mysql pdo zip pcntl && \
+RUN apt-get update && apt-get install -y software-properties-common unzip curl wget python3 python3-pip && \
+    #docker-php-ext-install pdo_mysql pdo zip pcntl && \
     pip3 install awscli --upgrade --user
 
 # composer
