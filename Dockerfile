@@ -17,6 +17,12 @@ RUN apt-get update && apt-get install -y software-properties-common unzip curl w
     #docker-php-ext-install pdo_mysql pdo zip pcntl && \
     pip3 install awscli --upgrade --user
 
+RUN add-apt-repository -y ppa:ondrej/php
+
+RUN apt-get update && apt-get install -y php7.3-cli php7.3-bcmath php7.3-bz2 \
+                       php7.3-curl php7.3-gd php7.3-json php7.3-mbstring \
+                       php7.3-mysql php7.3-opcache php7.3-sqlite3 php7.3-xml
+
 # composer
 RUN wget https://getcomposer.org/download/1.8.6/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer && \
     composer --version
