@@ -17,6 +17,11 @@ RUN apt-get update && apt-get install -y software-properties-common unzip curl w
     #docker-php-ext-install pdo_mysql pdo zip pcntl && \
     pip3 install awscli --upgrade --user
 
+run export DEBIAN_FRONTEND=noninteractive && \
+    ln -s /usr/share/zoneinfo/UTC /etc/localtime && \
+    apt-get install -y tzdata && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
 RUN add-apt-repository -y ppa:ondrej/php
 
 RUN apt-get update && apt-get install -y php7.3-cli php7.3-bcmath php7.3-bz2 \
