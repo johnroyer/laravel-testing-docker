@@ -1,4 +1,4 @@
-FROM php:7.3.11-cli
+FROM php:7.1.33-cli
 
 # build base environment
 RUN apt-get update && apt-get install -y unzip libzip-dev libssl-dev libmcrypt-dev libpng-dev wget python3 python3-pip && \
