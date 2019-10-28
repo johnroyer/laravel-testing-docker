@@ -1,7 +1,7 @@
 FROM php:7.3.11-cli
 
 # build base environment
-RUN apt-get update && apt-get install -y unzip libssl-dev libmcrypt-dev libpng-dev wget python3 python3-pip && \
+RUN apt-get update && apt-get install -y unzip libzip-dev libssl-dev libmcrypt-dev libpng-dev wget python3 python3-pip && \
     docker-php-ext-install pdo_mysql pdo zip pcntl && \
     pip3 install awscli --upgrade --user
 
