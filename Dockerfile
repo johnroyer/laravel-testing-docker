@@ -1,17 +1,20 @@
 FROM php:7.3.11-cli
 
-# build base environment
-RUN apt-get update && apt-get install -y unzip libzip-dev libssl-dev libmcrypt-dev libpng-dev wget python3 python3-pip && \
-    docker-php-ext-install pdo_mysql pdo zip pcntl && \
-    pip3 install awscli --upgrade --user
+RUN apt-get update && apt-get install -y wget  apt-utils  lsb-release
 
-# composer
-RUN wget https://getcomposer.org/download/1.8.6/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer && \
-    composer selfupdate && composer --version
+# install MySQL 5.7
+RUN cd /tmp && \
+    ROOT_PASSWORD="your_root_password" && \
+    echo "mysql-apt-config mysql-apt-config/unsupported-platform select abort" | /usr/bin/debconf-set-selections && \
+    echo "mysql-apt-config mysql-apt-config/repo-codenameselect bionic" | /usr/bin/debconf-set-selections && \
+    echo "mysql-apt-config mysql-apt-config/select-tools select" | /usr/bin/debconf-set-selections && \
+    echo "mysql-apt-config mysql-apt-config/repo-distroselect ubuntu" | /usr/bin/debconf-set-selections && \
+    echo "mysql-apt-config mysql-apt-config/select-server select mysql-5.7" | /usr/bin/debconf-set-selections && \
+    echo "mysql-apt-config mysql-apt-config/select-product select Apply" | /usr/bin/debconf-set-selections && \
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.14-1_all.deb -O /tmp/mysql.deb && \
+    dpkg -i /tmp/mysql.deb && \
+    apt-get update
 
-# nodejs
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash && \
-    . /root/.bashrc && \
-    nvm --version && \
-    nvm install v12.13.0
+RUN apt-cache search mysql-server
 
+#RUN mysql -u root -password -e "use mysql; UPDATE user SET authentication_string=PASSWORD('password') WHERE User='root'; flush privileges;"
