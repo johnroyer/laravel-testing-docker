@@ -3,8 +3,6 @@
 cd /tmp
 ls
 export DEBIAN_FRONTEND="noninteractive"
-export PASSWD="root"
-debconf-set-selections <<< "mysql-community-server/root-pass password root"
 debconf-set-selections <<< "mysql-community-server/root-pass password root"
 dpkg -i mysql-common_5.7.27-1ubuntu18.04_amd64.deb  
 dpkg -i libmysqlclient20_5.7.27-1ubuntu18.04_amd64.deb 
