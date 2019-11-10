@@ -3,9 +3,7 @@ FROM php:7.3.11-cli
 RUN apt-get update && apt-get install -y wget  apt-utils bash
 
 # install MySQL 5.7
-COPY mysql-install.sh /tmp/mysql-install.sh
-
-RUN bash /tmp/mysql-install.sh
+COPY mysql-download.sh /tmp/mysql-download.sh
 
 #RUN find / -name '*mysql*' -type d
 
