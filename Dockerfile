@@ -8,8 +8,4 @@ COPY install.sh /tmp/install.sh
 RUN bash /tmp/mysql-download.sh
 RUN bash /tmp/install.sh
 
-#RUN find / -name '*mysql*' -type d
 
-#RUN apt-cache search mysql-server
-
-#RUN mysql -u root -password -e "use mysql; UPDATE user SET authentication_string=PASSWORD('password') WHERE User='root'; flush privileges;"
