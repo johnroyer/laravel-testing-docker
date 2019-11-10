@@ -1,6 +1,6 @@
 FROM php:7.3.11-cli
 
-RUN apt-get update && apt-get install -y wget  apt-utils bash
+RUN apt-get update && apt-get install -y wget  apt-utils bash nano less
 
 # install MySQL 5.7
 COPY mysql-download.sh /tmp/mysql-download.sh
