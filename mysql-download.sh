@@ -16,4 +16,4 @@ else
 fi
 
 echo untar bundle
-tar xvf /tmp/mysql.tar
+tar xvf /tmp/mysql.tar -C /tmp
