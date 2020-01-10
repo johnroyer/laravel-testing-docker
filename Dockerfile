@@ -1,4 +1,4 @@
-FROM php:7.3.11-cli
+FROM php:7.3.13-cli
 
 RUN apt-get update && apt-get install -y wget  apt-utils bash nano less debconf
 
