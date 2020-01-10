@@ -8,4 +8,8 @@ COPY install.sh /tmp/install.sh
 RUN bash /tmp/mysql-download.sh
 RUN bash /tmp/install.sh
 
+# clean
+RUN apt-get clean && \
+    apt-get autoremove -y && \
+    rm -fr /var/cache/apt/archives/*
 
