@@ -1,4 +1,4 @@
-FROM php:7.3.11-cli
+FROM php:7.3.13-cli
 
 RUN apt-get update && apt-get install -y wget  apt-utils bash nano less debconf
 
@@ -8,4 +8,8 @@ COPY install.sh /tmp/install.sh
 RUN bash /tmp/mysql-download.sh
 RUN bash /tmp/install.sh
 
+# clean
+RUN apt-get clean && \
+    apt-get autoremove -y && \
+    rm -fr /var/cache/apt/archives/*
 
