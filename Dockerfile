@@ -21,5 +21,6 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.s
 # clean
 RUN apt-get clean && \
     apt-get autoremove -y && \
+    rm -fr /tmp/* && \
     rm -fr /var/cache/apt/archives/*
 
