@@ -2,8 +2,13 @@
 
 echo Download MySQL bundle
 wget --progress=bar:force:noscroll \
-    https://downloads.mysql.com/archives/get/file/mysql-server_5.7.27-1ubuntu18.04_amd64.deb-bundle.tar \
+    https://downloads.mysql.com/archives/get/p/23/file/mysql-server_5.7.27-1ubuntu18.04_amd64.deb-bundle.tar \
     -O /tmp/mysql.tar
+
+if [ $? != 0 ]; then
+    echo Download failed
+    exit 1
+fi
 
 HASH=`md5sum /tmp/mysql.tar | awk "{print \\$1}"`
 echo $HASH
