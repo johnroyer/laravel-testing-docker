@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM php:7.4.9-cli
 
 RUN apt-get update && apt-get install -y wget  apt-utils bash nano less debconf
 
